@@ -61,7 +61,7 @@ const LoginScreen = ({navigation}) => {
           console.log(responseJson.data.email);
           navigation.replace('DrawerNavigationRoutes');
         } else {
-          setErrortext(responseJson.msg);
+          setErrortext(responseJson);
           console.log('Please check your email id or password');
         }
       })
@@ -86,7 +86,7 @@ const LoginScreen = ({navigation}) => {
           <KeyboardAvoidingView enabled>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../Image/aboutreact.png')}
+                source={require('../Image/logo.png')}
                 style={{
                   width: '50%',
                   height: 100,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   mainBody: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#307ecc',
+    backgroundColor: '#FFFFFF',
     alignContent: 'center',
   },
   SectionStyle: {
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     borderColor: '#dadae8',
   },
   registerTextStyle: {
-    color: '#FFFFFF',
+    color: '#000000',
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 14,

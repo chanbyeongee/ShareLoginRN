@@ -126,7 +126,7 @@ const RegisterScreen = (props) => {
     );
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#307ecc'}}>
+    <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
       <Loader loading={loading} />
       <ScrollView
         keyboardShouldPersistTaps="handled"
@@ -136,7 +136,7 @@ const RegisterScreen = (props) => {
         }}>
         <View style={{alignItems: 'center'}}>
           <Image
-            source={require('../Image/aboutreact.png')}
+            source={require('../Image/logo.png')}
             style={{
               width: '50%',
               height: 100,
@@ -153,6 +153,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="닉네임"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               ref={subnameInputRef}
               returnKeyType="next"
               onSubmitEditing={() =>
@@ -168,6 +169,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="이름"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               ref={nameInputRef}
               returnKeyType="next"
               onSubmitEditing={() =>
@@ -183,6 +185,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="성별"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               keyboardType="numeric"
               ref={genderInputRef}
               returnKeyType="next"
@@ -199,6 +202,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="생년월일(YY/MM/DD)"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               keyboardType="numeric"
               ref={birthInputRef}
               returnKeyType="next"
@@ -215,6 +219,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="이메일(example@google.com)"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               keyboardType="email-address"
               ref={emailInputRef}
               returnKeyType="next"
@@ -231,6 +236,7 @@ const RegisterScreen = (props) => {
               underlineColorAndroid="#f000"
               placeholder="비밀번호"
               placeholderTextColor="#8b9cb5"
+              color="#000000"
               ref={passwordInputRef}
               returnKeyType="next"
               onSubmitEditing={Keyboard.dismiss}
@@ -282,7 +288,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,

@@ -38,22 +38,16 @@ const LoginScreen = ({navigation}) => {
       return;
     }
     setLoading(true);
-    let dataToSend = {email: userEmail, password: userPassword};
-    let formBody = [];
-    for (let key in dataToSend) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
+    let user = {email: userEmail, password: userPassword};
 
-    fetch('http://114.108.83.133:3000/users/sign_in', {
+    fetch('http://192.168.55.157:3000/login', {
       method: 'POST',
-      body: formBody,
+      body: JSON.stringify({
+        user,
+      }),
       headers: {
         //Header Defination
-        'Content-Type':
-        'application/x-www-form-urlencoded;charset=UTF-8',
+        'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
@@ -62,7 +56,7 @@ const LoginScreen = ({navigation}) => {
         setLoading(false);
         console.log(responseJson);
         // If server response message same as Data Matched
-        if (responseJson.status === 'success') {
+        if (responseJson.status.code == "200" ) {
           AsyncStorage.setItem('user_id', responseJson.data.email);
           console.log(responseJson.data.email);
           navigation.replace('DrawerNavigationRoutes');

@@ -1,4 +1,4 @@
-// Example of Splash, Login and Sign Up in React Native
+ // Example of Splash, Login and Sign Up in React Native
 // https://aboutreact.com/react-native-login-and-signup/
 import 'react-native-gesture-handler';
 

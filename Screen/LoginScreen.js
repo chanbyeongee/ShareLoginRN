@@ -40,7 +40,7 @@ const LoginScreen = ({navigation}) => {
     setLoading(true);
     let user = {email: userEmail, password: userPassword};
 
-    fetch('http://192.168.55.157:3000/login', {
+    fetch('http://10.0.2.2:3001/api/login', {
       method: 'POST',
       body: JSON.stringify({
         user,
@@ -50,20 +50,24 @@ const LoginScreen = ({navigation}) => {
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
+      .then((res) => {
         //Hide Loader
         setLoading(false);
-        console.log(responseJson);
+
         // If server response message same as Data Matched
-        if (responseJson.status.code == "200" ) {
-          AsyncStorage.setItem('user_id', responseJson.data.email);
-          console.log(responseJson.data.email);
-          navigation.replace('DrawerNavigationRoutes');
+        if (res.ok) {
+          AsyncStorage.setItem('user_token',res.headers.get("Authorization"));
+          return res.json();
+
+
         } else {
-          setErrortext(responseJson);
           console.log('Please check your email id or password');
         }
+      })
+      .then((response)=>{
+        AsyncStorage.setItem('user_id', response.data.name);
+        console.log(response.data.email);
+        navigation.replace('DrawerNavigationRoutes');
       })
       .catch((error) => {
         //Hide Loader
@@ -89,7 +93,7 @@ const LoginScreen = ({navigation}) => {
                 source={require('../Image/logo.jpg')}
                 style={{
                   width: '200%',
-                  height: 300,
+                  height: 100,
                   resizeMode: 'contain',
                   margin: 30,
                 }}

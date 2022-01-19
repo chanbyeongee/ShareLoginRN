@@ -11,6 +11,8 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
 import SettingsScreen from './DrawerScreens/SettingsScreen';
+import MytubeScreen from './DrawerScreens/MytubeScreen';
+import MytubeWebView from './MytubeWebView'
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
@@ -68,6 +70,39 @@ const settingScreenStack = ({navigation}) => {
   );
 };
 
+const mytubeScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="MytubeScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#307ecc', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="MytubeScreen"
+        component={MytubeScreen}
+        options={{
+          title: 'Mytube', //Set Header Title
+        }}
+      />
+      <Stack.Screen
+        name="MytubeWebView"
+        component={MytubeWebView}
+        // Hiding header for Navigation Drawer
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = (props) => {
   return (
     <Drawer.Navigator
@@ -90,6 +125,11 @@ const DrawerNavigatorRoutes = (props) => {
         name="settingScreenStack"
         options={{drawerLabel: 'Setting Screen'}}
         component={settingScreenStack}
+      />
+      <Drawer.Screen
+        name="mytubeScreenStack"
+        options={{drawerLabel: 'Mytube Screen'}}
+        component={mytubeScreenStack}
       />
     </Drawer.Navigator>
   );

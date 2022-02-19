@@ -10,7 +10,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
-import SettingsScreen from './DrawerScreens/SettingsScreen';
+import SubScreen from './DrawerScreens/SubScreen';
 import MytubeScreen from './DrawerScreens/MytubeScreen';
 import MytubeWebView from './MytubeWebView'
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
@@ -43,10 +43,10 @@ const homeScreenStack = ({navigation}) => {
   );
 };
 
-const settingScreenStack = ({navigation}) => {
+const subScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
-      initialRouteName="SettingsScreen"
+      initialRouteName="SubScreen"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerHeader navigationProps={navigation} />
@@ -60,10 +60,10 @@ const settingScreenStack = ({navigation}) => {
         },
       }}>
       <Stack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
+        name="SubScreen"
+        component={SubScreen}
         options={{
-          title: 'Settings', //Set Header Title
+          title: 'Sub', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -122,9 +122,9 @@ const DrawerNavigatorRoutes = (props) => {
         component={homeScreenStack}
       />
       <Drawer.Screen
-        name="settingScreenStack"
-        options={{drawerLabel: 'Setting Screen'}}
-        component={settingScreenStack}
+        name="subScreenStack"
+        options={{drawerLabel: 'Sub Screen'}}
+        component={subScreenStack}
       />
       <Drawer.Screen
         name="mytubeScreenStack"
